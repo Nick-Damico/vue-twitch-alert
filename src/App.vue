@@ -1,11 +1,20 @@
 <template>
-  <div id="app" class="container-fluid">
-    <NavigationBar />
-    <NowPlaying />
-  </div>
+  <b-container fluid>
+    <b-row>
+      <b-col>
+        <NavigationBar />
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
+        <NowPlaying :streamer="selectedStreamer"/>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
+import BootstrapVue from 'bootstrap-vue'
 import axios from 'axios'
 import NavigationBar from './components/NavigationBar'
 import NowPlaying from './components/NowPlaying'
@@ -21,20 +30,19 @@ export default {
   },
   data() {
     return {
-      streamers: []
+      streamers: [],
+      selectedStreamer: null
     }
   },
   mounted() {
     axios.get('https://api.twitch.tv/helix/streams?first=20', {
       headers: {
         'Client-ID': API_CLIENT_ID
-      },
-      params: {
-        client_id: API_CLIENT_ID
       }
     })
     .then(response => {
-      console.log(response)
+      this.streamers = response.data.data;
+      this.selectedStreamer = response.data.data[Math.floor(Math.random()*response.data.data.length)];
     })
     .catch(error => {
       console.log(error)
@@ -44,8 +52,4 @@ export default {
 </script>
 
 <style scoped>
-  #app {
-    padding: 0;
-    background-color: black;
-  }
 </style>
