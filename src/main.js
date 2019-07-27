@@ -4,6 +4,7 @@ import App from './App.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './app.css'
+import './filters'
 
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
