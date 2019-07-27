@@ -6,7 +6,7 @@
       </b-col>
       <b-col>
         <div>
-          <b-card :title="this.streamer.title"
+          <b-card :title="this.streamer.user_name"
                   :img-src="thumbnailUrl()"
                   img-alt="Image"
                   img-top
@@ -15,6 +15,8 @@
                   class="mb-2">
             <b-card-text>
               {{ this.streamer.type }}
+              <br />
+              {{ this.streamer.title}}
             </b-card-text>
             <b-button href="#" variant="primary">View Streamer</b-button>
           </b-card>
@@ -38,7 +40,7 @@
     methods: {
       thumbnailUrl() {
         return this.streamer.thumbnail_url.replace(/{width}/, 320).replace(/{height}/, 180);
-      }
+      },
     }
   }
 
