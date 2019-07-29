@@ -6,6 +6,23 @@ img {
   max-width: 100%;
 }
 
+/******************
+Utility Classes
+******************/
+:root {
+  --text-white: #e2e2e2;
+  --text-mint: #67d0b0;
+}
+
+/******************
+Utility Classes
+******************/
+
 .container-fluid {
   padding: 0;
+}
+
+.wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
 }
