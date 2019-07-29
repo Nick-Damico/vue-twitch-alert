@@ -1,13 +1,18 @@
 <template lang="html">
-  <div v-if="streamer">
+  <li class="list-group-item" v-if="streamer" @click="onClick">
     {{ this.streamer.title }}
-  </div>
+  </li>
 </template>
 
 <script>
 export default {
   name: 'StreamerCard',
   props: ['streamer'],
+  methods: {
+    onClick() {
+      return this.$emit('streamerSelect', this.streamer);
+    }
+  },
   computed: {
     thumbnailUrl() {
       return this.streamer.thumbnail_url.replace(/{width}/, 320).replace(/{height}/, 180);

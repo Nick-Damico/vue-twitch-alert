@@ -12,7 +12,7 @@
       </b-col>
     </b-row>
     <b-row>
-        <StreamerList :streamers="streamers" />
+        <StreamerList :streamers="streamers" @streamerSelect="onStreamerSelect" />
     </b-row>
   </b-container>
 </template>
@@ -39,6 +39,11 @@
       return {
         streamers: [],
         selectedStreamer: null
+      }
+    },
+    methods: {
+      onStreamerSelect(streamer) {
+        this.selectedStreamer = streamer;
       }
     },
     mounted() {
