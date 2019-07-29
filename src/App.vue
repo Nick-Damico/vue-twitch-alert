@@ -12,11 +12,7 @@
       </b-col>
     </b-row>
     <b-row>
-        <StreamerList
-        v-for="streamer in streamers"
-        :streamer="streamer"
-        :key="streamer.id"
-        ></StreamerList>
+        <StreamerList :streamers="streamers" />
     </b-row>
   </b-container>
 </template>

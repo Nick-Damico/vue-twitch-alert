@@ -1,45 +1,29 @@
 <template lang="html">
-  <b-container v-if="streamer" id="nowPlaying" fluid>
-    <b-row>
-      <b-col>
-        <VideoPlayer></VideoPlayer>
-      </b-col>
-      <b-col>
-        <div>
-          <b-card :title="this.streamer.user_name"
-                  :img-src="thumbnailUrl()"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2">
-            <b-card-text>
-              {{ this.streamer.type }}
-              <br />
-              {{ this.streamer.title}}
-            </b-card-text>
-            <b-button href="#" variant="primary">View Streamer</b-button>
-          </b-card>
+  <div v-if="streamer" id="nowPlaying">
+    <div class="frow centered">
+      <div class="col-md-2-3">
+        <div class="video-preview">
+          <img :src="thumbnailUrl" />
         </div>
-      </b-col>
-    </b-row>
-  </b-container>
+      </div>
+      <div class="col-md-1-3">
+        <div class="video-details">
+          <h4 class="video-details__title">{{ this.streamer.user_name }}</h4>
+          <p>{{ this.streamer.title }}</p>
+          <b-button href="#" variant="primary">View Streamer</b-button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-
-  import VideoPlayer from './VideoPlayer'
-  import VideoDetails from './VideoDetails'
-
   export default {
     name: 'NowPlaying',
     props: ['streamer'],
-    components: {
-      VideoPlayer
-    },
-    methods: {
+    computed: {
       thumbnailUrl() {
-        return this.streamer.thumbnail_url.replace(/{width}/, 320).replace(/{height}/, 180);
+        return this.streamer.thumbnail_url.replace(/{width}/, 512).replace(/{height}/, 288);
       },
     }
   }
@@ -54,4 +38,12 @@
     min-height: 60vh;
   }
 
+  .video-preview {
+    text-align: center;
+  }
+
+  .video-details {
+    align-self: flex-start;
+    text-align: left;
+  }
 </style>
