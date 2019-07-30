@@ -1,19 +1,9 @@
 <template>
 
   <b-container fluid>
-    <b-row>
-      <b-col>
-        <NavigationBar />
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <NowPlaying :streamer="selectedStreamer" />
-      </b-col>
-    </b-row>
-    <b-row>
-        <StreamerList :streamers="streamers" @streamerSelect="onStreamerSelect" />
-    </b-row>
+    <NavigationBar />
+    <NowPlaying :streamer="selectedStreamer" />
+    <StreamerList :streamers="streamers" @streamerSelect="onStreamerSelect" />
   </b-container>
 </template>
 

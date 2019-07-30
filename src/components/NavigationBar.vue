@@ -1,29 +1,16 @@
 <template lang="html">
-  <div>
-    <b-navbar toggleable="lg" type="dark" variant="dark">
-        <b-navbar-brand href="#">StreamerAlert</b-navbar-brand>
-
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-        <b-collapse id="nav-collapse" is-nav>
-          <!-- Right aligned nav items -->
-          <b-navbar-nav class="ml-auto">
-            <b-nav-form>
-              <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-              <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-            </b-nav-form>
-
-            <b-nav-item-dropdown right>
-              <!-- Using 'button-content' slot -->
-              <template slot="button-content"><em>User</em></template>
-              <b-dropdown-item href="#">Profile</b-dropdown-item>
-              <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-            </b-nav-item-dropdown>
-          </b-navbar-nav>
-        </b-collapse>
-    </b-navbar>
+  <div class="frow navbar">
+    <div class="col-md-1-1">
+      <div class="wrapper">
+        <nav>
+          <h2 class="brand">StreamerAlert</h2>
+          <div class="search-container">
+            <input type="text" name="streamer[name]" placeholder="search" />
+          </div>
+        </nav>
+      </div>
+    </div>
   </div>
-
 </template>
 
 <script>
@@ -35,5 +22,24 @@
 </script>
 
 <style lang="css" scoped>
+  .brand {
+    margin-top: 0;
+    font-weight: 300;
+    color: var(--twitch-purple);
+  }
+
+  .navbar {
+    background: #212121;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .search-container {
+    margin-left: auto;
+  }
+
 
 </style>
