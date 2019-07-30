@@ -1,11 +1,12 @@
 <template lang="html">
-  <ul class="list-group" v-if="streamers">
-    <StreamerCard v-for="streamer in streamers" :streamer="streamer" @streamerSelect="onStreamerSelect" />
-  </ul>
+  <div class="frow wrapper" v-if="streamers">
+    <StreamerListItem v-for="streamer in streamers" :streamer="streamer" @streamerSelect="onStreamerSelect" />
+  </div>
 </template>
 
 <script>
 import StreamerCard from './StreamerCard'
+import StreamerListItem from './StreamerListItem'
 
 export default {
   name: 'StreamerList',
@@ -16,7 +17,8 @@ export default {
     }
   },
   components: {
-    StreamerCard
+    StreamerCard,
+    StreamerListItem
   }
 }
 </script>
