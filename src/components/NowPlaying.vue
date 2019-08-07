@@ -1,16 +1,17 @@
 <template lang="html">
-  <div v-if="streamer" id="nowPlaying">
+  <div v-if="streamer" id="nowPlaying" class="bg-blue-purple-gradient">
     <div class="wrapper">
       <div class="frow gutters centered items-stretch">
-        <div class="col-md-1-2">
+        <div class="col-sm-1-2">
           <div class="video-preview">
             <img :src="thumbnailUrl" />
           </div>
         </div>
-        <div class="col-md-1-2 video-details__col">
+        <div class="col-sm-1-2 video-details__col">
           <div class="video-details">
             <h4 class="video-details__title">{{ this.streamer.user_name }}</h4>
             <p class="video-details__text">{{ this.streamer.title }}</p>
+            <p>Current Viewers: {{ this.streamer.viewer_count }}</p>
             <b-button class="video-details__btn" href="#" variant="primary">Watch Stream</b-button>
           </div>
         </div>
@@ -36,10 +37,6 @@
 
   #nowPlaying {
     padding: 30px;
-    background-color: #6441a4;
-    background: #8E2DE2;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 
   .video-preview {
