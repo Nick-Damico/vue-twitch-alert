@@ -12,6 +12,9 @@ const actions = {
   login: ({ commit }) => {
     twitch_api.login()
   },
+  finalizeLogin: () => {
+
+  },
   logout: ({ commit }) => {
     commit("setToken", null)
   }

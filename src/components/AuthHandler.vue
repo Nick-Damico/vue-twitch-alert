@@ -1,7 +1,7 @@
 <template lang="html">
-  <div class="">
-    Loading Please wait...
-  </div>
+  <h2>
+    Now Loading...
+  </h2>
 </template>
 
 <script>
@@ -11,4 +11,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+  h2 {
+    font-weight: 300;
+    text-align: center;
+    color: white;
+    padding: 2rem 0;
+  }
 </style>

@@ -3,6 +3,7 @@ import BootstrapVue from 'bootstrap-vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import AuthHandler from './components/AuthHandler'
+import LandingPage from './components/LandingPage'
 import store from './store/index'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -15,9 +16,11 @@ Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 
 const router = new VueRouter({
+  mode: 'history',
   routes: [
-    { path: '/oauth2/callback', components: AuthHandler }
-  ]
+    { path: '/oauth2/callback', component: AuthHandler },
+    { path: '/', component: LandingPage }
+  ],
 })
 
 new Vue({
