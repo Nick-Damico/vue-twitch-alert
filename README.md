@@ -2,7 +2,7 @@
 
 Application to view and track your favorite streams. Built as my first `Vue.js` project using `oauth2` and `TwitchAPI`.
 
-![Twitch Alert](./screenshots/alpha-build-twitch-alert.png "Twitch Alert Vue.js")
+![Twitch Alert](./screenshots/alpha-build-twitch-alert2.png "Twitch Alert Vue.js")
 
 ## npm packages
 "frow": "^3.1.4",
