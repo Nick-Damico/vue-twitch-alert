@@ -9,9 +9,10 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'frow/dist/frow.min.css'
 import './app.css'
 
+Vue.config.productionTip = false
+
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
-Vue.config.productionTip = false
 
 const router = new VueRouter({
   routes: [

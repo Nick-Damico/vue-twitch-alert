@@ -3,7 +3,7 @@ import qs from 'qs'
 const CLIENT_ID = process.env.VUE_APP_CLIENT_ID
 const CLIENT_SECRET = process.env.VUE_APP_CLIENT_SECRET
 const ROOT_URL = 'https://id.twitch.tv'
-const redirect_uri = 'http://localhost:8080/callback'
+const redirect_uri = 'http://localhost:8080/oauth2/callback'
 const grant_type = 'client_credentials'
 const response_type = 'token'
 // space separated
