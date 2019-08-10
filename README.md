@@ -1,5 +1,17 @@
 # twitch_alert
 
+Application to view and track your favorite streams. Built as my first `Vue.js` project using `oauth2` and `TwitchAPI`.
+
+![Twitch Alert](./screenshots/alpha-build-twitch-alert.png "Twitch Alert Vue.js")
+
+## npm packages
+"frow": "^3.1.4",
+"lodash": "^4.17.15",
+"qs": "^6.7.0",
+"vue": "^2.6.10",
+"vue-router": "^3.1.2",
+"vuex": "^3.1.1"
+
 ## Project setup
 ```
 npm install
