@@ -1,22 +1,23 @@
-import axios from 'axios'
+import qs from 'qs'
 
-const CLIENT_ID = process.env.VUE_APP_CLIENT_APP
+const CLIENT_ID = process.env.VUE_APP_CLIENT_ID
 const CLIENT_SECRET = process.env.VUE_APP_CLIENT_SECRET
 const ROOT_URL = 'https://id.twitch.tv'
+const redirect_uri = 'http://localhost:8080/callback'
 const grant_type = 'client_credentials'
-const scope = ''
+const response_type = 'token'
+// space separated
+const scope = 'user:read:broadcast'
 
 export default {
   login() {
-     const params = {
+     const querystring = {
       client_id: CLIENT_ID,
-      client_secret: CLIENT_SECRET,
-      grant_type: grant_type
+      redirect_uri: redirect_uri,
+      response_type: response_type,
+      scope: scope
     }
 
-    axios.post(ROOT_URL, params)
+    window.location = `${ROOT_URL}/oauth2/authorize?${qs.stringify(querystring)}`;
   }
 };
-
-// Causes the Users Browser to redirect to this address.
-// window.location = `${ROOT_URL}/oauth2/authorize?${qs.stringify(querystring)}`;

@@ -1,4 +1,4 @@
-import twitch from '../../apis/twitch'
+import twitch_api from '../../apis/twitch'
 
 const state = {
   token: null
@@ -9,13 +9,10 @@ const getters = {
 }
 
 const actions = {
-  login ({ commit }) => {
-    twitch.login()
-    .then(r => {
-      console.log(r)
-    })
-  }
-  logout ({ commit }) => {
+  login: ({ commit }) => {
+    twitch_api.login()
+  },
+  logout: ({ commit }) => {
     commit("setToken", null)
   }
 }
