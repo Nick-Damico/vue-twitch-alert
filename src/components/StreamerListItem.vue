@@ -16,7 +16,7 @@
     props: ['streamer'],
     computed: {
       thumbnailUrl() {
-        return this.streamer.thumbnail_url.replace(/{width}/, 512).replace(/{height}/, 288)
+        return this.streamer.thumbnail_url.replace(/{width}/, 740).replace(/{height}/, 416)
       }
     },
     methods: {

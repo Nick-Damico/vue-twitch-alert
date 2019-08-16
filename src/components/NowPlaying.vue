@@ -3,20 +3,17 @@
   <div id="nowPlaying" class="bg-blue-purple-gradient" v-if="streamer">
     <div class="ui two column stackable grid container">
       <div class="column">
-        <div>
-          <div class="video-preview">
-            <img class="video" :src="thumbnailUrl" />
-          </div>
+        <div class="video-preview">
+          <img class="ui fluid image" :src="thumbnailUrl" />
         </div>
       </div>
+
       <div class="column">
-        <div>
-          <div class="video-details">
-            <h4 class="video-details__title">{{ this.streamer.user_name }}</h4>
-            <p class="video-details__text">{{ this.streamer.title }}</p>
-            <p>Current Viewers: {{ this.streamer.viewer_count }}</p>
-            <button class="video-details__btn" href="#" variant="primary">Watch Stream</button>
-          </div>
+        <div class="video-details">
+          <h3 class="video-details__title">{{ this.streamer.user_name }}</h3>
+          <p class="video-details__text">{{ this.streamer.title }}</p>
+          <p>Current Viewers: {{ this.streamer.viewer_count }}</p>
+          <button class="ui primary button video-details__btn" href="#">Watch Stream</button>
         </div>
       </div>
     </div>
@@ -48,10 +45,6 @@
     text-align: center;
   }
 
-  .video {
-    max-width: 100%;
-  }
-
   .video-details__col {
     max-width: 400px;
   }
@@ -63,6 +56,7 @@
   }
 
   .video-details__title {
+    font-size: 2.2rem;
     color: var(--text-mint);
     margin-bottom: 8px;
   }
