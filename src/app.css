@@ -1,16 +1,6 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 body {
   background-color: black;
 }
-
-img { max-width: 100%; }
-ul { list-style: none; }
-a { text-decoration: none !important; }
 
 /******************
 Utility Classes
@@ -25,14 +15,6 @@ Utility Classes
 Utility Classes
 ******************/
 
-.container-fluid {
-  padding: 0;
-}
-
-.wrapper {
-  max-width: 1300px;
-  margin: 0 auto;
-}
 
 .bg-blue-purple-gradient {
   background-color: var(--twitch-purple);

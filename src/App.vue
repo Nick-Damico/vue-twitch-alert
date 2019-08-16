@@ -1,16 +1,15 @@
 <template>
 
-  <b-container fluid>
+  <div class="container">
     <NavigationBar />
     <router-view></router-view>
-  </b-container>
+  </div>
+
 </template>
 
 <script>
-
-  import BootstrapVue from 'bootstrap-vue'
   import NavigationBar from './components/NavigationBar'
-  
+
   export default {
     name: 'app',
     components: {

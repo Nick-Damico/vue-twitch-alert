@@ -1,33 +1,38 @@
 <template lang="html">
-  <div v-if="streamer" id="nowPlaying" class="bg-blue-purple-gradient">
-    <div class="wrapper">
-      <div class="frow gutters centered items-stretch">
-        <div class="col-sm-1-2">
+
+  <div id="nowPlaying" class="bg-blue-purple-gradient" v-if="streamer">
+    <div class="ui two column stackable grid container">
+      <div class="column">
+        <div>
           <div class="video-preview">
-            <img :src="thumbnailUrl" />
+            <img class="video" :src="thumbnailUrl" />
           </div>
         </div>
-        <div class="col-sm-1-2 video-details__col">
+      </div>
+      <div class="column">
+        <div>
           <div class="video-details">
             <h4 class="video-details__title">{{ this.streamer.user_name }}</h4>
             <p class="video-details__text">{{ this.streamer.title }}</p>
             <p>Current Viewers: {{ this.streamer.viewer_count }}</p>
-            <b-button class="video-details__btn" href="#" variant="primary">Watch Stream</b-button>
+            <button class="video-details__btn" href="#" variant="primary">Watch Stream</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
+
   export default {
     name: 'NowPlaying',
     props: ['streamer'],
     computed: {
       thumbnailUrl() {
-        return this.streamer.thumbnail_url.replace(/{width}/, 512).replace(/{height}/, 288);
-      },
+        return this.streamer.thumbnail_url.replace(/{width}/, 512).replace(/{height}/, 288)
+      }
     }
   }
 
@@ -41,6 +46,10 @@
 
   .video-preview {
     text-align: center;
+  }
+
+  .video {
+    max-width: 100%;
   }
 
   .video-details__col {
@@ -67,4 +76,5 @@
     margin-top: auto;
     width: 100%;
   }
+
 </style>

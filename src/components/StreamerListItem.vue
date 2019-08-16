@@ -1,38 +1,51 @@
 <template lang="html">
-  <div class="col-xs-1-2 col-md-1-3">
+
+  <div class="column">
     <div class="streamer-card" @click="onClick">
-      <img :src="thumbnailUrl" alt="">
+      <img class="ui fluid image" :src="thumbnailUrl" alt="">
       <h5 class="streamer-title">{{ this.streamer.title }}</h5>
     </div>
   </div>
+
 </template>
 
 <script>
-export default {
-  name: 'StreamerListItem',
-  props: ['streamer'],
-  computed: {
-    thumbnailUrl() {
-      return this.streamer.thumbnail_url.replace(/{width}/, 512).replace(/{height}/, 288);
+
+  export default {
+    name: 'StreamerListItem',
+    props: ['streamer'],
+    computed: {
+      thumbnailUrl() {
+        return this.streamer.thumbnail_url.replace(/{width}/, 512).replace(/{height}/, 288)
+      }
     },
-  },
-  methods: {
-    onClick() {
-      return this.$emit('streamerSelect', this.streamer);
+    methods: {
+      onClick() {
+        return this.$emit('streamerSelect', this.streamer)
+      }
     }
   }
-}
+
 </script>
 
 <style lang="css" scoped>
+
   .streamer-card {
     position: relative;
   }
 
   .streamer-title {
     position: absolute;
-    bottom: 20px;
+    display: flex;
+    background: rgba(64, 36, 99, 0.6);
+    bottom: 0;
     color: white;
+    flex-direction: column;
     font-weight: 200;
+    justify-content: center;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
   }
+
 </style>

@@ -1,22 +1,23 @@
 <template lang="html">
-  <div class="frow navbar">
-    <div class="col-md-1-1">
-      <div class="wrapper">
-        <nav>
-          <h2 class="brand">StreamerAlert</h2>
-          <div class="nav-right">
-            <div class="search-container">
-              <input type="text" name="streamer[name]" placeholder="search" />
-            </div>
-            <a href="#" class="login-btn" @click="login">Login</a>
-          </div>
-        </nav>
-      </div>
+
+  <div class="ui pointing menu">
+    <a href="/" class="active item">
+      StreamerAlert
+    </a>
+    <a class="item">
+      Top 20
+    </a>
+    <div class="right menu">
+      <a class="ui item">
+        Login
+      </a>
     </div>
   </div>
+
 </template>
 
 <script>
+
   import { mapActions } from 'vuex'
 
   export default {
@@ -27,40 +28,20 @@
 </script>
 
 <style lang="css" scoped>
+  .ui.menu {
+    margin-bottom: 0;
+  }
+  
   .brand {
-    margin-top: 0;
-    font-weight: 300;
-    color: var(--twitch-purple);
+    color: var(--twitch-purple) !important;
   }
 
   .navbar {
     background: #212121;
   }
 
-  nav {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .nav-right {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: auto;
-  }
-
   .login-btn {
-    padding: 8px 15px;
-    background: #530ae0;
-    color: white;
-    border-radius: 6px;
-    margin-left: 1rem;
-    transition: background-color .3s ease-in-out;
-  }
-
-  .login-btn:hover,
-  .login-btn:active {
-    background-color: #4006af;
+    color: white !important;
   }
 
 </style>
