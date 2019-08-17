@@ -1,28 +1,20 @@
 <template lang="html">
 
   <div class="ui inverted pagination menu">
-  <a class="active item">
-    1
-  </a>
-  <div class="disabled item">
-    ...
+    <a class="active item">
+      {{ this.pageCount }}
+    </a>
   </div>
-  <a class="item">
-    10
-  </a>
-  <a class="item">
-    11
-  </a>
-  <a class="item">
-    12
-  </a>
-</div>
 
 </template>
 
 <script>
+
   export default {
-    name: 'Pagination'
+    name: 'Pagination',
+    props: {
+      pageCount: Number
+    }
   }
 
 </script>

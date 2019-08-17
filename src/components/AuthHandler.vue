@@ -36,8 +36,11 @@
   h2 {
     font-weight: 300;
     text-align: center;
-    color: white;
     padding: 2rem 0;
+  }
+
+  .content, .header {
+    color: white;
   }
 
 </style>

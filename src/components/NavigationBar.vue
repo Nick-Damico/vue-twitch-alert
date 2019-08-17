@@ -7,8 +7,15 @@
     <a class="item">
       Top 20
     </a>
-    <div class="right menu">
-      <a class="ui item">
+    <div v-if="isLoggedIn" class="right menu">
+      <a class="ui item">Notifications</a>
+      <a class="ui item">Following</a>
+      <a class="ui item">Account</a>
+      <a class="ui item" @click="logout">Logout</a>
+    </div>
+
+    <div v-else class="right menu">
+      <a @click="login" class="ui item">
         Login with Twitch
       </a>
     </div>
@@ -18,11 +25,12 @@
 
 <script>
 
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'NavigationBar',
-    methods: mapActions(['login'])
+    methods: mapActions(['login', 'logout']),
+    computed: mapGetters(['isLoggedIn'])
   }
 
 </script>
