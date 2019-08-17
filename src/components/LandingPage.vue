@@ -10,6 +10,7 @@ import axios from 'axios'
 
 import NowPlaying from './NowPlaying'
 import StreamerList from './StreamerList'
+import Pagination from './Pagination'
 
 // Api Access Keys
 const API_KEY = process.env.VUE_APP_SECRET

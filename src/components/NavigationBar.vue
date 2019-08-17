@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <div class="ui pointing menu">
+  <div class="ui inverted pointing menu">
     <a href="/" class="active item">
       StreamerAlert
     </a>
@@ -9,7 +9,7 @@
     </a>
     <div class="right menu">
       <a class="ui item">
-        Login
+        Login with Twitch
       </a>
     </div>
   </div>
@@ -31,7 +31,7 @@
   .ui.menu {
     margin-bottom: 0;
   }
-  
+
   .brand {
     color: var(--twitch-purple) !important;
   }

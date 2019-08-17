@@ -1,7 +1,7 @@
 <template lang="html">
 
   <div id="nowPlaying" class="bg-blue-purple-gradient" v-if="streamer">
-    <div class="ui two column stackable grid container">
+    <div class="ui container two column stackable grid">
       <div class="column">
         <div class="video-preview">
           <img class="ui fluid image" :src="thumbnailUrl" />
@@ -38,7 +38,7 @@
 <style lang="css" scoped>
 
   #nowPlaying {
-    padding: 30px;
+    padding: 30px 0;
   }
 
   .video-preview {

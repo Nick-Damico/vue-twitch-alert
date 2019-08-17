@@ -1,14 +1,18 @@
 <template lang="html">
 
-  <div class="ui grid stackable three column centered streamer-list" v-if="streamers">
-    <StreamerListItem v-for="streamer in streamers" :streamer="streamer" @streamerSelect="onStreamerSelect" />
-  </div>
+
+      <div class="ui grid centered stackable streamer-list" v-if="streamers">
+        <StreamerListItem v-for="streamer in streamers" :streamer="streamer" @streamerSelect="onStreamerSelect" />
+        <Pagination />
+      </div>
+
 
 </template>
 
 <script>
 
   import StreamerListItem from './StreamerListItem'
+  import Pagination from './Pagination'
 
   export default {
     name: 'StreamerList',
@@ -19,7 +23,8 @@
       }
     },
     components: {
-      StreamerListItem
+      StreamerListItem,
+      Pagination
     }
   }
 
