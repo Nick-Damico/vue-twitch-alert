@@ -1,15 +1,11 @@
 <template lang="html">
-  <div class="row">
-    <div class="ui one column centered grid">
-      <h2 class="ui icon header centered">
-        <i class="sync icon"></i>
-        <div class="content">
-          Authenticating Please Wait...
-          <div class="sub header">Via TwitchAPI</div>
-        </div>
-      </h2>
+
+    <div class="ui items">
+      <div class="item">
+        <i class="sync icon huge"></i>
+        <h3 class="ui heading">Authenticating Please Wait...</h3>
+      </div>
     </div>
-  </div>
 
 </template>
 
@@ -29,18 +25,40 @@
 
 <style lang="css" scoped>
 
-  .column {
-    margin-top: 20px;
+  @keyframes loading {
+      from {transform: rotate(0deg)}
+      to { transform: rotate(360deg)}
   }
 
-  h2 {
-    font-weight: 300;
-    text-align: center;
-    padding: 2rem 0;
+  @-webkit-keyframes pulsate {
+    0% { opacity: 0.5; }
+    50% { opacity: 1.0; }
+    100% { opacity: 0.5; }
   }
 
-  .content, .header {
+
+  .icon {
+    animation: loading 1.6s infinite linear;
+  }
+
+  .items {
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: white;
+    text-align: center;
+  }
+
+  .heading {
+    animation: pulsate 1.6s infinite linear;
+    color: var(--twitch-purple)
   }
 
 </style>
