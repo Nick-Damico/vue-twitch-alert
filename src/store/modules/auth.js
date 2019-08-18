@@ -1,5 +1,6 @@
 import twitch_api from "../../apis/twitch";
 import qs from "qs";
+import { router } from '../../main'
 
 const state = {
   token: window.localStorage.getItem('twitch_token')
@@ -18,6 +19,9 @@ const actions = {
 
     commit("SET_TOKEN", query.access_token);
     window.localStorage.setItem('twitch_token', query.access_token)
+    setTimeout(() => {
+      router.push('/')
+    }, 3000)
   },
   logout: ({ commit }) => {
     commit("SET_TOKEN", null);
