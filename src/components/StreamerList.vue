@@ -2,7 +2,7 @@
 
   <div class="ui grid centered stackable streamer-list" v-if="streamers">
     <StreamerListItem v-for="streamer in streamers" :streamer="streamer" @streamerSelect="onStreamerSelect" />
-    <Pagination :pageCount="pageCount()"/>
+    <Pagination :streamers="streamers" @streamerList="onStreamerList"/>
   </div>
 
 </template>
@@ -14,6 +14,11 @@
 
   export default {
     name: 'StreamerList',
+    data() {
+      return {
+        streamerList: []
+      }
+    },
     props: {
       streamers: {
         type: Array,
@@ -24,8 +29,8 @@
       onStreamerSelect(streamer) {
         return this.$emit('streamerSelect', streamer)
       },
-      pageCount: () => {
-
+      onStreamerList(streamers) {
+        return this.streamerList = streamers
       }
     },
     components: {

@@ -1,8 +1,8 @@
 <template lang="html">
 
   <div class="ui inverted pagination menu">
-    <a class="active item">
-      {{ this.pageCount }}
+    <a v-for="item in pages" class="active item">
+      {{ item }}
     </a>
   </div>
 
@@ -12,8 +12,29 @@
 
   export default {
     name: 'Pagination',
+    data() {
+      return {
+        pages: 1,
+        perPage: 5
+      }
+    },
     props: {
-      pageCount: Number
+      streamers: {
+        type: Array,
+        required: true
+      }
+    },
+    computed: {
+      numberOfPages() {
+        this.data.pages = Math.ceil(this.streamers.length / this.data.perPage)
+      }
+    },
+    watch: {
+      streamers: {
+        handler: function(newVal, oldVal) {
+            this.pages = Math.ceil(newVal.length / this.perPage)
+        }
+      }
     }
   }
 
