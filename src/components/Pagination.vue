@@ -2,8 +2,8 @@
 
   <div class="ui sixteen wide inverted pagination menu">
     <a v-for="pageNum in numberOfPages" class="active item" @click="onUpdatePage(parseInt(pageNum))">
-          {{ pageNum }}
-        </a>
+              {{ pageNum }}
+            </a>
   </div>
 
 </template>
@@ -26,9 +26,9 @@
       }
     },
     methods: {
-      onUpdatePage: function(pageNum=1) {
+      onUpdatePage: function(pageNum = 1) {
         this.currentPage = pageNum
-        let start = ((pageNum - 1) * this.perPage)
+        let start = (pageNum - 1) * this.perPage
         let end = start + this.perPage
         let streamerList = this.streamers.slice(start, end)
 
@@ -36,11 +36,9 @@
       }
     },
     watch: {
-      streamers: {
-        handler: function(newVal, oldVal) {
-          this.numberOfPages = Math.ceil(newVal.length / this.perPage)
-          this.onUpdatePage()
-        }
+      streamers: function(newVal, oldVal) {
+        this.numberOfPages = Math.ceil(newVal.length / this.perPage)
+        this.onUpdatePage()
       }
     }
   }
