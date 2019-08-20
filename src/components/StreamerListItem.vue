@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <div class="eight wide tablet four wide computer column">
+  <div class="eight wide tablet five wide computer column">
     <div class="streamer-card" @click="onClick">
       <img class="ui fluid image" :src="thumbnailUrl" alt="">
       <h5 class="streamer-title">{{ this.streamer.title }}</h5>
