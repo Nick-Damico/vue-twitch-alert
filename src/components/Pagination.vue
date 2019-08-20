@@ -1,9 +1,9 @@
 <template lang="html">
 
-  <div class="ui inverted pagination menu">
-    <a v-for="item in pages" class="active item">
-      {{ item }}
-    </a>
+  <div class="ui sixteen wide inverted pagination menu">
+    <a v-for="pageNum in numberOfPages" class="active item" @click="onPageClick(parseInt(pageNum))">
+          {{ pageNum }}
+        </a>
   </div>
 
 </template>
@@ -14,8 +14,9 @@
     name: 'Pagination',
     data() {
       return {
-        pages: 1,
-        perPage: 5
+        currentPage: 1,
+        numberOfPages: 1,
+        perPage: 6
       }
     },
     props: {
@@ -24,15 +25,20 @@
         required: true
       }
     },
-    computed: {
-      numberOfPages() {
-        this.data.pages = Math.ceil(this.streamers.length / this.data.perPage)
+    methods: {
+      onPageClick: function(pageNum) {
+        this.currentPage = pageNum
+        let start = ((pageNum - 1) * this.perPage)
+        let end = start + this.perPage
+        let streamerList = this.streamers.slice(start, end)
+
+        return this.$emit('paginate', streamerList)
       }
     },
     watch: {
       streamers: {
         handler: function(newVal, oldVal) {
-            this.pages = Math.ceil(newVal.length / this.perPage)
+          this.numberOfPages = Math.ceil(newVal.length / this.perPage)
         }
       }
     }
