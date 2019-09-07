@@ -10,6 +10,7 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
 
   export default {
     name: 'StreamerListItem',
@@ -20,8 +21,9 @@
       }
     },
     methods: {
+      ...mapActions(['setStreamer']),
       onClick() {
-        return this.$emit('streamerSelect', this.streamer)
+        this.setStreamer(this.streamer)
       }
     }
   }

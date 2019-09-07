@@ -10,9 +10,9 @@
 
       <div class="column">
         <div class="video-details">
-          <h3 class="video-details__title">{{ this.streamer.user_name }}</h3>
-          <p class="video-details__text">{{ this.streamer.title }}</p>
-          <p>Current Viewers: {{ this.streamer.viewer_count }}</p>
+          <h3 class="video-details__title">{{ streamer.user_name }}</h3>
+          <p class="video-details__text">{{ streamer.title }}</p>
+          <p>Current Viewers: {{ streamer.viewer_count }}</p>
           <button class="ui primary button video-details__btn" href="#">Watch Stream</button>
         </div>
       </div>
@@ -22,14 +22,20 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'NowPlaying',
-    props: ['streamer'],
     computed: {
+      ...mapGetters({
+        streamer: 'selectedStreamer'
+      }),
       thumbnailUrl() {
         return this.streamer.thumbnail_url.replace(/{width}/, 512).replace(/{height}/, 288)
       }
+    },
+    created() {
+
     }
   }
 

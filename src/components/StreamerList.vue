@@ -1,7 +1,7 @@
 <template lang="html">
 
   <div class="ui grid centered stackable streamer-list" v-if="streamers">
-    <StreamerListItem v-for="streamer in streamerList" :streamer="streamer" @streamerSelect="onStreamerSelect" />
+    <StreamerListItem v-for="streamer in streamerList" :streamer="streamer" />
     <Pagination :streamers="streamers" @paginate="onPaginate"/>
   </div>
 
@@ -26,9 +26,6 @@
       }
     },
     methods: {
-      onStreamerSelect(streamer) {
-        return this.$emit('streamerSelect', streamer)
-      },
       onPaginate(streamers) {
         return this.streamerList = streamers
       }

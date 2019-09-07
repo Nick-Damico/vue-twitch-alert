@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="landing-page">
-    <NowPlaying :streamer="selectedStreamer" />
-    <StreamerList :streamers="streamers" @streamerSelect="onStreamerSelect" />
+    <NowPlaying />
+    <StreamerList :streamers="streamers" />
   </div>
 </template>
 
@@ -11,6 +11,7 @@ import axios from 'axios'
 import NowPlaying from './NowPlaying'
 import StreamerList from './StreamerList'
 import Pagination from './Pagination'
+import { mapActions } from 'vuex'
 
 // Api Access Keys
 const API_KEY = process.env.VUE_APP_SECRET
@@ -24,14 +25,11 @@ export default {
   },
   data() {
     return {
-      streamers: [],
-      selectedStreamer: null
+      streamers: []
     }
   },
   methods: {
-    onStreamerSelect(streamer) {
-      this.selectedStreamer = streamer;
-    }
+    ...mapActions(['setStreamer'])
   },
   mounted() {
     axios
@@ -42,7 +40,7 @@ export default {
       })
       .then(response => {
         this.streamers = response.data.data
-        this.selectedStreamer = response.data.data[Math.floor(Math.random() * response.data.data.length)]
+        this.setStreamer(response.data.data[Math.floor(Math.random() * response.data.data.length)])
       })
       .catch(error => {
         console.log(error)
