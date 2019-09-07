@@ -4,17 +4,22 @@
     <div class="ui container two column stackable grid">
       <div class="column">
         <div class="video-preview">
-          <img class="ui fluid image" :src="thumbnailUrl" />
+          <img class="ui fluid image" :src="streamThumbnailUrl" />
         </div>
       </div>
 
-      <div class="column">
-        <div class="video-details">
+      <div class="column ui grid">
+        <div class="ten wide column">
           <h3 class="video-details__title">{{ streamer.user_name }}</h3>
           <p class="video-details__text">{{ streamer.title }}</p>
           <p>Current Viewers: {{ streamer.viewer_count }}</p>
-          <button class="ui primary button video-details__btn" href="#">Watch Stream</button>
         </div>
+        <div class="six wide column">
+          <div class="game-details" v-if="game">
+            <img class="game__box-art ui fluid image" :src="boxartThumbnailUrl" :alt="game.name">
+          </div>
+        </div>
+        <button class="ui primary button video-details__btn" href="#">Watch Stream</button>
       </div>
     </div>
   </div>
@@ -22,20 +27,34 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     name: 'NowPlaying',
     computed: {
       ...mapGetters({
-        streamer: 'selectedStreamer'
+        streamer: 'selectedStreamer',
+        game: 'selectedGame'
       }),
-      thumbnailUrl() {
+      boxartThumbnailUrl() {
+        if (this.game) {
+          return this.game.box_art_url.replace(/{width}/, 188).replace(/{height}/, 250)
+        }
+      },
+      streamThumbnailUrl() {
         return this.streamer.thumbnail_url.replace(/{width}/, 512).replace(/{height}/, 288)
       }
     },
-    created() {
-
+    methods: {
+      ...mapActions(['fetchGame'])
+    },
+    watch: {
+      streamer(newVal, oldVal) {
+        console.log(newVal)
+        if (newVal !== null) {
+          this.fetchGame()
+        }
+      }
     }
   }
 
@@ -77,4 +96,9 @@
     width: 100%;
   }
 
+
+  /* GAME DETAILS */
+  .game__box-art {
+    max-width: 180px;
+  }
 </style>

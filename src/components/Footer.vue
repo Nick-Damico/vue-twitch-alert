@@ -1,5 +1,7 @@
 <template lang="html">
-
+  <div class="ui container footer">
+    Footer
+  </div>
 </template>
 
 <script>
