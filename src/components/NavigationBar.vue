@@ -1,10 +1,10 @@
 <template lang="html">
 
   <div class="ui inverted pointing menu">
-    <a href="/" class="active item">
+    <a href="/" class="item">
       StreamerAlert
     </a>
-    <a class="item">
+    <a href="/top-20" class="active item">
       Top 20
     </a>
     <div v-if="isLoggedIn" class="right menu">
