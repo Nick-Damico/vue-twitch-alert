@@ -1,12 +1,12 @@
 <template lang="html">
 
   <div class="ui inverted pointing menu">
-    <a href="/" class="item">
+    <router-link to="/" class="item">
       StreamerAlert
-    </a>
-    <a href="/top-20" class="active item">
+    </router-link>
+    <router-link to="/top-20" class="active item">
       Top 20
-    </a>
+    </router-link>
     <div v-if="isLoggedIn" class="right menu">
       <a class="ui item">Notifications</a>
       <a class="ui item">Following</a>
@@ -29,7 +29,9 @@
 
   export default {
     name: 'NavigationBar',
-    methods: mapActions(['login', 'logout']),
+    methods: mapActions(
+      ['login', 'logout']
+    ),
     computed: mapGetters(['isLoggedIn'])
   }
 
