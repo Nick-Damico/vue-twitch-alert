@@ -17,7 +17,7 @@ const API_KEY = process.env.VUE_APP_SECRET
 const API_CLIENT_ID = process.env.VUE_APP_CLIENT_ID
 
 export default {
-  name: 'LandingPage',
+  name: 'TopTwenty',
   components: {
     NowPlaying,
     StreamerList
