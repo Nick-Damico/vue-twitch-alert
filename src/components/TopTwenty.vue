@@ -1,7 +1,8 @@
 <template lang="html">
 
-  <div class="landing-page">
+  <div>
     <NowPlaying />
+    <BoxArtScroller />
     <StreamerList v-if="streamers" :streamers="streamers" />
   </div>
 
@@ -11,6 +12,7 @@
 
   import axios from 'axios'
 
+  import BoxArtScroller from './BoxArtScroller'
   import NowPlaying from './NowPlaying'
   import StreamerList from './StreamerList'
   import Pagination from './Pagination'
@@ -24,6 +26,7 @@
     name: 'TopTwenty',
     components: {
       NowPlaying,
+      BoxArtScroller,
       StreamerList
     },
     methods: {
