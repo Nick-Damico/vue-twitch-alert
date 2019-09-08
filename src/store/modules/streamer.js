@@ -26,7 +26,7 @@ const mutations = {
     state.selectedStreamer = streamer;
   },
   SET_STREAMERS: (state, streamers) => {
-    state.streamers = [...state.streamers, streamers]
+    state.streamers = streamers
   }
 };
 

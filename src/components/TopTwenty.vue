@@ -1,52 +1,48 @@
 <template lang="html">
+
   <div class="landing-page">
     <NowPlaying />
-    <StreamerList :streamers="streamers" />
+    <StreamerList v-if="streamers" :streamers="streamers" />
   </div>
+
 </template>
 
 <script>
-import axios from 'axios'
 
-import NowPlaying from './NowPlaying'
-import StreamerList from './StreamerList'
-import Pagination from './Pagination'
-import { mapActions } from 'vuex'
+  import axios from 'axios'
 
-// Api Access Keys
-const API_KEY = process.env.VUE_APP_SECRET
-const API_CLIENT_ID = process.env.VUE_APP_CLIENT_ID
+  import NowPlaying from './NowPlaying'
+  import StreamerList from './StreamerList'
+  import Pagination from './Pagination'
+  import { mapActions, mapGetters } from 'vuex'
 
-export default {
-  name: 'TopTwenty',
-  components: {
-    NowPlaying,
-    StreamerList
-  },
-  data() {
-    return {
-      streamers: []
+  // Api Access Keys
+  const API_KEY = process.env.VUE_APP_SECRET
+  const API_CLIENT_ID = process.env.VUE_APP_CLIENT_ID
+
+  export default {
+    name: 'TopTwenty',
+    components: {
+      NowPlaying,
+      StreamerList
+    },
+    methods: {
+      ...mapActions(['setStreamer', 'fetchTop20'])
+    },
+    computed: {
+      ...mapGetters({ streamers: 'allStreamers' })
+    },
+    created() {
+      this.fetchTop20()
+    },
+    watch: {
+      streamers(newVal, oldVal) {
+        const streamer = newVal[Math.floor(Math.random() * newVal.length)]
+        this.setStreamer(streamer)
+      }
     }
-  },
-  methods: {
-    ...mapActions(['setStreamer'])
-  },
-  mounted() {
-    axios
-      .get('https://api.twitch.tv/helix/streams?first=20', {
-        headers: {
-          'Client-ID': API_CLIENT_ID
-        }
-      })
-      .then(response => {
-        this.streamers = response.data.data
-        this.setStreamer(response.data.data[Math.floor(Math.random() * response.data.data.length)])
-      })
-      .catch(error => {
-        console.log(error)
-      })
   }
-}
+
 </script>
 
 <style lang="css" scoped>
