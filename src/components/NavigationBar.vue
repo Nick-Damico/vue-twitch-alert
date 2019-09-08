@@ -16,8 +16,8 @@
 
     <div v-else class="right menu">
       <a @click="login" class="ui item">
-        Login with Twitch
-      </a>
+          Login with Twitch
+        </a>
     </div>
   </div>
 
@@ -29,15 +29,14 @@
 
   export default {
     name: 'NavigationBar',
-    methods: mapActions(
-      ['login', 'logout']
-    ),
+    methods: mapActions(['login', 'logout']),
     computed: mapGetters(['isLoggedIn'])
   }
 
 </script>
 
 <style lang="css" scoped>
+
   .ui.menu {
     margin-bottom: 0;
   }

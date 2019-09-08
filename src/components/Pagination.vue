@@ -3,8 +3,8 @@
   <div class="ui container">
     <div class="ui inverted centered pagination menu">
       <a v-for="pageNum in pageCount" class="active item" @click="onUpdatePage(parseInt(pageNum))">
-          {{ pageNum }}
-        </a>
+            {{ pageNum }}
+          </a>
     </div>
   </div>
 
