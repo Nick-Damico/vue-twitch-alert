@@ -24,6 +24,7 @@ export default {
       querystring
     )}`;
   },
+  // TODO: Might be able to refactor the fetchGame(s) methods into single method.
   fetchGame(id) {
     const querystring = {
       id: id
@@ -33,6 +34,16 @@ export default {
         "Client-ID": CLIENT_ID
       }
     });
+  },
+  fetchGames(ids) {
+    const querystring = {
+      id: ids
+    }
+    return axios.get(`${ROOT_URL}/games?${qs.stringify(querystring)}`, {
+      headers: {
+        "Client-ID": CLIENT_ID
+      }
+    })
   },
   fetchTop20Streamers() {
     const querystring = {

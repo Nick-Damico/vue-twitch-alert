@@ -50,7 +50,6 @@
     },
     watch: {
       streamer(newVal, oldVal) {
-        console.log(newVal)
         if (newVal !== null) {
           this.fetchGame()
         }
