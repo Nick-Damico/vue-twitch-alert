@@ -2,7 +2,7 @@
 
   <div>
     <NowPlaying />
-    <BoxArtScroller />
+    <BoxArtScroller :title="`The Games of the Top 20`" />
     <StreamerList v-if="streamers" :streamers="streamers" />
   </div>
 
