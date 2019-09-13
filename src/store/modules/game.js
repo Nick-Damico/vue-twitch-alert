@@ -13,20 +13,26 @@ const getters = {
 };
 
 const actions = {
-  async fetchGames({ commit, rootState }, gameIds) {
+  async fetchGames({ rootState, commit }, gameIds) {
     const streamers = rootState.streamer.streamers
     if (streamers.length > 0) {
       const game_ids = streamers.map((streamer) => streamer.game_id)
-      const games = await  twitch_api.fetchGames(game_ids)
+      const games = await twitch_api.fetchGames(game_ids)
 
       commit('SET_GAMES', games.data.data)
     }
   },
-  async fetchGame({ rootState, commit }) {
+  async fetchGame({ rootState, commit, state }) {
+    let game, response
     const { game_id } = rootState.streamer.selectedStreamer
-    const game = await twitch_api.fetchGame(game_id)
-
-    commit('SET_SELECTED_GAME', game.data.data[0])
+    if (state.games.length > 0) {
+      game = state.games.find(game => game.id === game_id)
+    } else {
+      response = await twitch_api.fetchGame(game_id)
+      game = response.data.data[0]
+    }
+    
+    commit('SET_SELECTED_GAME', game)
   }
 };
 

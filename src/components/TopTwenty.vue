@@ -30,7 +30,7 @@
       StreamerList
     },
     methods: {
-      ...mapActions(['setStreamer', 'fetchTop20'])
+      ...mapActions(['setStreamer', 'fetchTop20', 'fetchGames'])
     },
     computed: {
       ...mapGetters({ streamers: 'allStreamers' })
@@ -42,6 +42,7 @@
       streamers(newVal, oldVal) {
         const streamer = newVal[Math.floor(Math.random() * newVal.length)]
         this.setStreamer(streamer)
+        this.fetchGames()
       }
     }
   }
