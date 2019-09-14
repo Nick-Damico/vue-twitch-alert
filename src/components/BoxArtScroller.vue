@@ -52,6 +52,7 @@ export default {
   .box-art__scroller {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: nowrap;
     height: 300px;
