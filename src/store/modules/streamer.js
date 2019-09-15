@@ -19,6 +19,9 @@ const actions = {
     const streamersResponse = await twitch_api.fetchTop20Streamers()
     commit("SET_STREAMERS", streamersResponse.data.data)
     dispatch('fetchGames', {root:true})
+  },
+  async fetchFollowedStreamers({ commit }) {
+    
   }
 };
 

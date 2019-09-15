@@ -24,6 +24,13 @@ export default {
       querystring
     )}`;
   },
+  validate(token) {
+    return axios.get(`${AUTH_ROOT_URL}/oauth2/validate`, {
+      headers: {
+        'Authorization': 'OAuth ' + token
+      }
+    })
+  },
   // TODO: Might be able to refactor the fetchGame(s) methods into single method.
   fetchGame(id) {
     const querystring = {
@@ -54,5 +61,11 @@ export default {
         "Client-ID": CLIENT_ID
       }
     });
+  },
+  fetchFollowedStreamers() {
+    const querystring = {
+
+    }
+    return axios.get(`${ROOT_URL}/follows?${qs.stringify(querystring)}`)
   }
 };
