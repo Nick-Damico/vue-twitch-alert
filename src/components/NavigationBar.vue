@@ -9,7 +9,7 @@
     </router-link>
     <div v-if="isLoggedIn" class="right menu">
       <a class="ui item">Notifications</a>
-      <a class="ui item">Following</a>
+      <router-link to="/following" class="ui item">Following</router-link>
       <a class="ui item">Account</a>
       <a class="ui item" @click="logout">Logout</a>
     </div>
