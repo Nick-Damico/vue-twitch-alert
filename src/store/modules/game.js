@@ -27,11 +27,12 @@ const actions = {
     const { game_id } = rootState.streamer.selectedStreamer
     if (state.games.length > 0) {
       game = state.games.find(game => game.id === game_id)
-    } else {
+    }
+    if (game === undefined) {
       response = await twitch_api.fetchGame(game_id)
       game = response.data.data[0]
     }
-    
+
     commit('SET_SELECTED_GAME', game)
   }
 };
