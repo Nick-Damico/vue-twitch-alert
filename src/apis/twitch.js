@@ -62,10 +62,14 @@ export default {
       }
     });
   },
-  fetchFollowedStreamers() {
+  fetchFollowed(id) {
     const querystring = {
-
+      from_id: id
     }
-    return axios.get(`${ROOT_URL}/follows?${qs.stringify(querystring)}`)
+    return axios.get(`${ROOT_URL}/follows?${qs.stringify(querystring)}`), {
+      headers: {
+        "Client-ID": CLIENT_ID
+      }
+    }
   }
 };

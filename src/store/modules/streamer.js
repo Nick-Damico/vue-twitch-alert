@@ -20,8 +20,10 @@ const actions = {
     commit("SET_STREAMERS", streamersResponse.data.data)
     dispatch('fetchGames', {root:true})
   },
-  async fetchFollowedStreamers({ commit }) {
-    
+  async fetchFollowed({ rootState, commit }) {
+    const { user_id } = rootState.auth.currentUser
+    const streamerResponse = await twitch_apit.fetchFollowed(user_id)
+    commit("SET_FOLLOWERS", streamerResponse.data.data)
   }
 };
 
