@@ -9,7 +9,7 @@ const state = {
 
 const getters = {
   isLoggedIn: state => !!state.token,
-  getCurrentUser: state => currentUser
+  getCurrentUser: state => state.currentUser
 };
 
 const actions = {
@@ -36,7 +36,7 @@ const actions = {
       router.push("/");
     }, 3000);
   },
-  
+
   logout: ({ commit }) => {
     commit("SET_TOKEN", null);
     commit("SET_CURRENT_USER", null);
