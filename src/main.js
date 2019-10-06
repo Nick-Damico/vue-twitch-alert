@@ -7,8 +7,10 @@ import LandingPage from './components/LandingPage'
 import Following from './components/Following'
 import store from './store/index'
 import './app.css'
- 
+
 Vue.config.productionTip = false
+// Before you create app
+Vue.config.devtools = process.env.NODE_ENV === 'development'
 
 Vue.use(VueRouter)
 
