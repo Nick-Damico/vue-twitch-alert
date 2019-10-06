@@ -4,6 +4,14 @@ Application to view and track your favorite streams. Built as my first `Vue.js` 
 
 ![Streamer Alert](./screenshots/alpha-build-streamer-alert.png "Twitch Alert Vue.js")
 
+TODO:
+- [ ] Design Followers Page fetching authenticated users followed list
+- Style Pages
+  - [ ] Landing Page
+  - [ ] Followers Page
+  - [ ] Add Profile Configuration page
+- Setup VueRouter to use isActive styling on links.
+
 ## npm packages
 - "lodash": "^4.17.15"
 - "qs": "^6.7.0"
