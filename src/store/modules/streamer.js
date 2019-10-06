@@ -3,12 +3,14 @@ import twitch_api from "../../apis/twitch";
 
 const state = {
   selectedStreamer: null,
-  streamers: []
+  streamers: [],
+  followers: []
 };
 
 const getters = {
   selectedStreamer: state => state.selectedStreamer,
-  allStreamers: state => state.streamers
+  allStreamers: state => state.streamers,
+  getFollowers: state => state.followers
 };
 
 const actions = {
@@ -22,8 +24,11 @@ const actions = {
   },
   async fetchFollowed({ rootState, commit }) {
     const { user_id } = rootState.auth.currentUser
-    const streamerResponse = await twitch_apit.fetchFollowed(user_id)
-    commit("SET_FOLLOWERS", streamerResponse.data.data)
+    const followerResponse = await twitch_api.fetchFollowed(user_id)
+    const followedIds = followerResponse.data.data.map(followed => followed.to_id)
+    const followers = await twitch_api.fetchStreamers(followedIds)
+    debugger
+    commit("SET_FOLLOWERS", followers.data.data)
   }
 };
 
@@ -33,6 +38,9 @@ const mutations = {
   },
   SET_STREAMERS: (state, streamers) => {
     state.streamers = streamers
+  },
+  SET_FOLLOWERS: (state, streamers) => {
+    state.followers = streamers
   }
 };
 
