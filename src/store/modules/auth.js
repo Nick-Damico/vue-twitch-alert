@@ -17,13 +17,14 @@ const actions = {
     twitch_api.login();
   },
 
-  async validateUser({ commit, state }) {
+  async validateUser({ commit, dispatch, state }) {
     const { token } = state;
     const response = await twitch_api.validate(token);
     const jsonResponse = JSON.stringify(response.data)
 
     commit("SET_CURRENT_USER", response.data);
     window.localStorage.setItem("twitch_user", jsonResponse)
+    dispatch('fetchFollowed', {root: true})
   },
 
   finalizeLogin: ({ commit, dispatch }, hash) => {

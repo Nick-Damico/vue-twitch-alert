@@ -5,16 +5,34 @@
       <h1 class="ui inverted masthead">
         Followers
       </h1>
+      <StreamerList :streamers="followers" />
     </div>
   </div>
 
 </template>
 
 <script>
+import StreamerList from './StreamerList'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'Followers'
+  name: 'Followers',
+  components: {
+    StreamerList
+  },
+  computed: {
+    ...mapGetters({
+      followers: 'getFollowers'
+    })
+  },
+  methods: {
+    ...mapActions(['fetchFollowed'])
+  },
+  created() {
+    if (this.followers.length < 1) {
+      this.fetchFollowed()
+    }
+  }
 }
 </script>
 
