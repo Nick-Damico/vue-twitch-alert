@@ -52,6 +52,17 @@ export default {
       }
     })
   },
+  fetchStreamers(ids) {
+    const querystring = {
+      user_id: ids
+    };
+
+    return axios.get(`${ROOT_URL}/streams?${qs.stringify(querystring)}`, {
+      headers: {
+        "Client-ID": CLIENT_ID
+      }
+    })
+  },
   fetchTop20Streamers() {
     const querystring = {
       first: 20
@@ -65,11 +76,11 @@ export default {
   fetchFollowed(id) {
     const querystring = {
       from_id: id
-    }
-    return axios.get(`${ROOT_URL}/follows?${qs.stringify(querystring)}`), {
+    };
+    return axios.get(`${ROOT_URL}/users/follows?${qs.stringify(querystring)}`, {
       headers: {
         "Client-ID": CLIENT_ID
       }
-    }
+    });
   }
 };
