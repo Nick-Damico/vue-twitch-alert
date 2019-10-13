@@ -27,7 +27,6 @@ const actions = {
     const followerResponse = await twitch_api.fetchFollowed(user_id)
     const followedIds = followerResponse.data.data.map(followed => followed.to_id)
     const followers = await twitch_api.fetchStreamers(followedIds)
-    debugger
     commit("SET_FOLLOWERS", followers.data.data)
   }
 };
