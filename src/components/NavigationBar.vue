@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <div class="ui inverted pointing menu">
+  <nav class="ui inverted pointing menu">
     <router-link to="/" class="item">
       StreamerAlert
     </router-link>
@@ -19,7 +19,7 @@
           Login with Twitch
         </a>
     </div>
-  </div>
+  </nav>
 
 </template>
 

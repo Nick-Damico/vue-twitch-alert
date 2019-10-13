@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <div class="ui container">
+  <div id="pagination" class="ui container">
     <div class="ui inverted centered pagination menu">
       <a v-for="pageNum in pageCount" class="active item" @click="onUpdatePage(parseInt(pageNum))">
             {{ pageNum }}
@@ -48,5 +48,9 @@
 </script>
 
 <style lang="css" scoped>
+  #pagination {
+    margin: 20px 0;
+    text-align: center;
+  }
 
 </style>

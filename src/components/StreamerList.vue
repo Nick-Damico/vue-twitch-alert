@@ -1,7 +1,9 @@
 <template lang="html">
 
-  <div class="ui grid centered stackable streamer-list" v-if="streamers">
-    <StreamerListItem v-for="streamer in streamerList" :streamer="streamer" />
+  <div>
+    <div class="ui grid container centered stackable streamer-list" v-if="streamers">
+      <StreamerListItem v-for="streamer in streamerList" :streamer="streamer" />
+    </div>
     <Pagination :streamers="streamers" @paginate="onPaginate" />
   </div>
 
