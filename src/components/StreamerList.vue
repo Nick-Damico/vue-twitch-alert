@@ -2,7 +2,9 @@
 
   <div>
     <div class="ui grid container centered stackable streamer-list" v-if="streamers">
-      <StreamerListItem v-for="streamer in streamerList" :streamer="streamer" />
+      <StreamerListItem v-for="streamer in streamerList"
+                        v-bind:key="streamer.id"
+                        :streamer="streamer" />
     </div>
     <Pagination :streamers="streamers" @paginate="onPaginate" />
   </div>
