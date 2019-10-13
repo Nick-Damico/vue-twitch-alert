@@ -1,7 +1,7 @@
 <template lang="html">
 
-  <div>
-    <div class="ui grid container centered stackable streamer-list" v-if="streamers">
+  <div class="">
+    <div class="ui grid centered stackable streamer-list" v-if="streamers">
       <StreamerListItem v-for="streamer in streamerList"
                         v-bind:key="streamer.id"
                         :streamer="streamer" />

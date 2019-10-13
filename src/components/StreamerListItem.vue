@@ -51,4 +51,7 @@
     width: 100%;
   }
 
+  .placeholder {
+    min-height: 190px;
+  }
 </style>

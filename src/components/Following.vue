@@ -1,7 +1,7 @@
 <template lang="html">
 
-  <div class="masthead ui inverted vertical masthead center aligned segment">
-    <div class="ui text container">
+  <div class="ui inverted center aligned segment">
+    <div class="ui text">
       <h1 class="ui dividing header inverted text-slim">
         Following
       </h1>
