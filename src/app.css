@@ -3,7 +3,7 @@ body {
 }
 
 /******************
-Utility Classes
+  Utility Classes
 ******************/
 :root {
   --text-white: #e2e2e2;
@@ -12,10 +12,10 @@ Utility Classes
 }
 
 /******************
-Utility Classes
+  TEXT
 ******************/
 
-
+.text-slim { font-weight: 300; }
 .bg-blue-purple-gradient {
   background-color: var(--twitch-purple);
   background: #8E2DE2;  /* fallback for old browsers */

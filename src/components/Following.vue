@@ -2,11 +2,11 @@
 
   <div class="masthead ui inverted vertical masthead center aligned segment">
     <div class="ui text container">
-      <h1 class="ui inverted masthead">
-        Followers
+      <h1 class="ui dividing header inverted text-slim">
+        Following
       </h1>
-      <StreamerList :streamers="followers" />
     </div>
+    <StreamerList :streamers="followers" />
   </div>
 
 </template>
@@ -29,12 +29,16 @@ export default {
     ...mapActions(['fetchFollowed'])
   },
   created() {
-    if (this.followers.length < 1) {
-      this.fetchFollowed()
-    }
+    this.fetchFollowed();
   }
 }
 </script>
 
 <style lang="css" scoped>
+
+  h1 {
+    margin-top: 20px !important;
+    text-align: left;
+    font-weight: 300 !important;
+  }
 </style>

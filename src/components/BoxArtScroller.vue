@@ -1,7 +1,7 @@
 <template lang="html">
   <div v-if="games" class="box-art-scroller">
     <div class="ui text container center aligned box-art__text-container">
-      <h3 class="box-art__title">{{ title }}</h3>
+      <h3 class="box-art__title text-slim">{{ title }}</h3>
     </div>
     <div class="box-art__scroller">
       <div v-for="game in games">
@@ -43,7 +43,6 @@ export default {
     padding-top: 20px;
   }
   .box-art__title {
-    font-weight: 300;
     font-size: 1.8rem
   }
   .box-art {
