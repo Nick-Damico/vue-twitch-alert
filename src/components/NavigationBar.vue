@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <nav class="ui inverted pointing menu">
+  <nav class="ui inverted pointing menu nav">
     <router-link to="/" class="item">
       StreamerAlert
     </router-link>
@@ -37,20 +37,17 @@
 
 <style lang="css" scoped>
 
-  .ui.menu {
+  .nav {
     margin-bottom: 0;
+    border-bottom: 1px solid var(--light-grey) !important;
   }
 
   .brand {
     color: var(--twitch-purple) !important;
   }
 
-  .navbar {
-    background: #212121;
-  }
-
   .login-btn {
-    color: white !important;
+    color: var(--white) !important;
   }
 
 </style>

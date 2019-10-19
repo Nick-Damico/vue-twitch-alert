@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <div class="">
+  <div class="streamer-container">
     <div class="ui grid centered stackable streamer-list" v-if="streamers">
       <StreamerListItem v-for="streamer in streamerList"
                         v-bind:key="streamer.id"
@@ -43,9 +43,14 @@
 </script>
 
 <style lang="css" scoped>
-
+  .streamer-container {
+    display: flex;
+    flex-grow: 2;
+    flex-direction: column;
+  }
+  
   .streamer-list {
+    flex-grow: 2;
     padding-top: 30px;
   }
-
 </style>

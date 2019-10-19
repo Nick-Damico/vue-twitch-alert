@@ -6,7 +6,9 @@ body {
   Utility Classes
 ******************/
 :root {
-  --text-white: #e2e2e2;
+  --white: #e2e2e2;
+  --light-grey: #353535;
+  --text-white: var(--white);
   --text-mint: #67d0b0;
   --twitch-purple: #6441a4;
   --twitch-purple-drk: #513486;
