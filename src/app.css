@@ -1,24 +1,41 @@
+/******************
+  Base Styles
+******************/
 body {
   background-color: black;
 }
 
+ul { margin: 0; padding: 0; list-style: none; }
+
+
+
 /******************
-  Utility Classes
+  CSS Variables
 ******************/
 :root {
   --white: #e2e2e2;
+  --black: #1b1c1d;
   --light-grey: #353535;
+  --menu-board-color: var(--light-grey);
+  --text-black: var(--black);
   --text-white: var(--white);
   --text-mint: #67d0b0;
   --twitch-purple: #6441a4;
   --twitch-purple-drk: #513486;
 }
 
-/******************
-  TEXT
-******************/
 
+
+/******************
+  Utility Classes
+******************/
 .text-slim { font-weight: 300; }
+
+
+
+/******************
+  Main Styles
+******************/
 .bg-blue-purple-gradient {
   background-color: var(--twitch-purple);
   background: #8E2DE2;  /* fallback for old browsers */
