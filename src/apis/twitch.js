@@ -73,6 +73,16 @@ export default {
       }
     });
   },
+  fetchUsers(ids) {
+    const querystring = {
+      id: ids
+    }
+    return axios.get(`${ROOT_URL}/users?${qs.stringify(querystring)}`, {
+      headers: {
+        "Client-ID": CLIENT_ID
+      }
+    });
+  },
   fetchFollowed(id) {
     const querystring = {
       from_id: id

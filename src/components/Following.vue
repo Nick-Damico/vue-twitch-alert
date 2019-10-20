@@ -9,7 +9,7 @@
     <div class="ui item menu inverted following__menu" :class="menuKlasses">
       <a id="menu__item" v-for="item in menuItems" class="item" :class="{active: isActive(item)}">{{ item }}</a>
     </div>
-    <StreamerList :streamers="followers" />
+    <StreamerList :streamers="liveFollowers" />
   </div>
 
 </template>
@@ -32,7 +32,8 @@
     },
     computed: {
       ...mapGetters({
-        followers: 'getFollowers'
+        liveFollowers: 'getFollowers',
+        offlineFollowers: 'getOffline'
       })
     },
     methods: {
