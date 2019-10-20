@@ -39,7 +39,7 @@
 
   .nav {
     margin-bottom: 0;
-    border-bottom: 1px solid var(--light-grey) !important;
+    border-bottom: 1px solid var(--menu-board-color) !important;
   }
 
   .brand {

@@ -5,9 +5,11 @@ body {
   background-color: black;
 }
 
-ul { margin: 0; padding: 0; list-style: none; }
-
-
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
 /******************
   CSS Variables
@@ -24,23 +26,24 @@ ul { margin: 0; padding: 0; list-style: none; }
   --twitch-purple-drk: #513486;
 }
 
-
-
 /******************
   Utility Classes
 ******************/
-.text-slim { font-weight: 300; }
-
-
+.text-slim {
+  font-weight: 300;
+}
 
 /******************
   Main Styles
 ******************/
 .bg-blue-purple-gradient {
   background-color: var(--twitch-purple);
-  background: #8E2DE2;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #8E2DE2;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4A00E0, #8E2DE2);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   /* background: linear-gradient(to left rgba(74, 0, 224, 0.45), rgba(142, 45, 226, 0.45)), url('../public/now-playing-bg.png');
   background-repeat: no-repeat;
   background-position: center;

@@ -1,10 +1,13 @@
 <template lang="html">
 
-  <div class="ui inverted center aligned segment">
+  <div class="ui inverted center aligned segment following">
     <div class="ui text">
-      <h1 class="ui dividing header inverted text-slim">
+      <h2 class="ui inverted text-slim following__title">
         Following
-      </h1>
+      </h2>
+    </div>
+    <div class="ui item menu inverted following__menu" :class="menuKlasses">
+      <a id="menu__item" v-for="item in menuItems" class="item" :class="{active: isActive(item)}">{{ item }}</a>
     </div>
     <StreamerList :streamers="followers" />
   </div>
@@ -12,33 +15,57 @@
 </template>
 
 <script>
-import StreamerList from './StreamerList'
-import { mapGetters, mapActions } from 'vuex'
 
-export default {
-  name: 'Followers',
-  components: {
-    StreamerList
-  },
-  computed: {
-    ...mapGetters({
-      followers: 'getFollowers'
-    })
-  },
-  methods: {
-    ...mapActions(['fetchFollowed'])
-  },
-  created() {
-    this.fetchFollowed();
+  import StreamerList from './StreamerList'
+  import { mapGetters, mapActions } from 'vuex'
+
+  export default {
+    name: 'Followers',
+    data: () => {
+      return {
+        menuItems: ['Live', 'Offline', 'All', 'Recent VODS'],
+        menuKlasses: ['four']
+      }
+    },
+    components: {
+      StreamerList
+    },
+    computed: {
+      ...mapGetters({
+        followers: 'getFollowers'
+      })
+    },
+    methods: {
+      ...mapActions(['fetchFollowed']),
+      isActive: item => {
+        return item === 'Live'
+      }
+    },
+    created() {
+      this.fetchFollowed()
+    }
   }
-}
+
 </script>
 
 <style lang="css" scoped>
 
-  h1 {
+  .following__title {
+    font-size: 3rem;
     margin-top: 20px !important;
     text-align: left;
     font-weight: 300 !important;
   }
+
+  #menu__item.active {
+    color: var(--text-black) !important;
+    background: #a8ff78 !important;
+    background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78) !important;
+    background: linear-gradient(to right, #78ffd6, #a8ff78) !important;
+  }
+
+  .following__menu {
+    border-bottom: 1px solid var(--menu-board-color) !important;
+  }
+
 </style>
