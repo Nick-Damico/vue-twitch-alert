@@ -14,7 +14,9 @@
         :class="{active: isActive(item)}">{{ item }}
       </a>
     </div>
-    <StreamerList :streamers="liveFollowers" />
+
+      <StreamerList v-if="menuSelection === 'Live'" :streamers="liveFollowers" />
+      <StreamerList v-if="menuSelection === 'Offline'" :streamers="offlineFollowers" />
   </div>
 
 </template>
@@ -31,7 +33,8 @@ export default {
   data: () => {
     return {
       menuItems: ['Live', 'Offline', 'All', 'Recent VODS'],
-      menuKlasses: ['four']
+      menuKlasses: ['four'],
+      menuSelection: 'Live'
     }
   },
   components: {
@@ -45,19 +48,12 @@ export default {
   },
   methods: {
     ...mapActions(['fetchFollowed']),
-    isActive: item => {
-      return item === 'Live'
+    isActive: function(item) {
+      return item === this.menuSelection
     },
-    onSelect: (event) => {
-      const links = [...document.querySelectorAll('.menu__item')]
+    onSelect: function(event) {
       const { target } = event
-      links.filter(link => {
-        if (link === target) {
-          link.classList.add('active')
-        } else {
-          link.classList.remove('active')
-        }
-      })
+      this.menuSelection = target.innerText
     }
   },
     created() {

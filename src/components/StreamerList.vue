@@ -1,7 +1,7 @@
 <template lang="html">
 
-  <div class="streamer-container">
-    <div class="ui grid centered stackable streamer-list" v-if="streamers">
+  <div class="streamer-container" v-if="streamers">
+    <div class="ui grid centered stackable streamer-list" v-if="streamerList">
       <StreamerListItem v-for="streamer in streamerList"
                         v-bind:key="streamer.id"
                         :streamer="streamer" />
@@ -31,7 +31,7 @@
     },
     methods: {
       onPaginate(streamers) {
-        return (this.streamerList = streamers)
+        this.streamerList = streamers
       }
     },
     components: {
@@ -48,7 +48,7 @@
     flex-grow: 2;
     flex-direction: column;
   }
-  
+
   .streamer-list {
     flex-grow: 2;
     padding-top: 30px;
