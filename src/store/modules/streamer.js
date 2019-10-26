@@ -38,7 +38,7 @@ const actions = {
     const { allIds, liveIds } = payload
     const offlineIds = allIds.filter(id => !liveIds.includes(id))
     const offlineStreamers = await twitch_api.fetchUsers(offlineIds)
-
+    
     commit("SET_OFFLINE", offlineStreamers.data.data)
   }
 };
@@ -54,7 +54,7 @@ const mutations = {
     state.streamers = streamers
   },
   SET_OFFLINE: (state, streamers) => {
-    state.streamers = streamers
+    state.offline = streamers
   }
 };
 
