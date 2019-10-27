@@ -15,8 +15,11 @@
       </a>
     </div>
 
-      <StreamerList v-if="menuSelection === 'Live'" :streamers="liveFollowers" />
-      <StreamerList v-if="menuSelection === 'Offline'" :streamers="offlineFollowers" />
+      <StreamerList v-if="streamersLive" :streamers="liveFollowers" :type="menuSelection" />
+      <StreamerList v-else-if="streamersOffline" :streamers="offlineFollowers" :type="menuSelection" />
+      <div v-else>
+        All your followed Streamers are taking a Break.
+      </div>
   </div>
 
 </template>
@@ -44,7 +47,13 @@ export default {
     ...mapGetters({
       liveFollowers: 'getFollowers',
       offlineFollowers: 'getOffline'
-    })
+    }),
+    streamersLive: function() {
+      return this.menuSelection === 'Live' && this.liveFollowers.length > 0
+    },
+    streamersOffline: function() {
+      return this.menuSelection === 'Offline' && this.offlineFollowers.length > 0
+    }
   },
   methods: {
     ...mapActions(['fetchFollowed']),
