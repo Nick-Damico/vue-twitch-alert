@@ -80,7 +80,7 @@ export default {
     font-weight: 300 !important;
   }
 
-  .menu__item.active {
+  .ui.inverted.menu .menu__item.active {
     color: var(--text-black) !important;
     background: #a8ff78 !important;
     background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78) !important;
