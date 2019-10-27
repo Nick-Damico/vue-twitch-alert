@@ -27,7 +27,10 @@
     },
     props: {
       streamers: Array,
-      type: String
+      type: {
+        type: String,
+        default: 'Live'
+      }
     },
     methods: {
       onPaginate(streamers) {
