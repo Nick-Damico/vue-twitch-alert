@@ -1,10 +1,12 @@
 <template lang="html">
 
-  <div class="streamer-container" v-if="streamers">
+  <div class="streamer-container">
+    Type value is: {{ type }}
     <div class="ui grid centered stackable streamer-list" v-if="streamerList">
       <StreamerListItem v-for="streamer in streamerList"
                         v-bind:key="streamer.id"
-                        :streamer="streamer" />
+                        :streamer="streamer"
+                        :type="type" />
     </div>
     <Pagination :streamers="streamers" @paginate="onPaginate" />
   </div>
@@ -24,10 +26,8 @@
       }
     },
     props: {
-      streamers: {
-        type: Array,
-        default: []
-      }
+      streamers: Array,
+      type: String
     },
     methods: {
       onPaginate(streamers) {
