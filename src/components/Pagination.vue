@@ -2,9 +2,10 @@
 
   <div id="pagination" class="ui container">
     <div class="ui inverted centered pagination menu">
-      <a v-for="pageNum in pageCount" class="active item" @click="onUpdatePage(parseInt(pageNum))">
-            {{ pageNum }}
-          </a>
+      <a v-for="pageNum in pageCount"
+      v-bind:key="pageNum"
+      class="active item"
+      @click="onUpdatePage(parseInt(pageNum))">{{ pageNum }}</a>
     </div>
   </div>
 
@@ -42,12 +43,17 @@
         this.pageCount = Math.ceil(newVal.length / this.itemsPerPage)
         this.onUpdatePage()
       }
+    },
+    mounted: function() {
+      this.pageCount = Math.ceil(this.streamers.length / this.itemsPerPage)
+      this.onUpdatePage()
     }
   }
 
 </script>
 
 <style lang="css" scoped>
+
   #pagination {
     margin: 20px 0;
     text-align: center;

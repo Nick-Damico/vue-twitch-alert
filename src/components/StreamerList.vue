@@ -1,7 +1,6 @@
 <template lang="html">
 
   <div class="streamer-container">
-    Type value is: {{ type }}
     <div class="ui grid centered stackable streamer-list" v-if="streamerList">
       <StreamerListItem v-for="streamer in streamerList"
                         v-bind:key="streamer.id"
@@ -34,7 +33,7 @@
     },
     methods: {
       onPaginate(streamers) {
-        this.streamerList = streamers
+        return this.streamerList = streamers
       }
     },
     components: {

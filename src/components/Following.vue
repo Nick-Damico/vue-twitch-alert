@@ -10,16 +10,14 @@
       <a
         v-for="item in menuItems"
         v-on:click="onSelect($event)"
+        v-bind:key="item"
         class="item menu__item"
         :class="{active: isActive(item)}">{{ item }}
       </a>
     </div>
-
-      <StreamerList v-if="streamersLive" :streamers="liveFollowers" :type="menuSelection" />
-      <StreamerList v-else-if="streamersOffline" :streamers="offlineFollowers" :type="menuSelection" />
-      <div v-else>
-        All your followed Streamers are taking a Break.
-      </div>
+      <StreamerList v-if="menuSelection === 'Live'" :streamers="liveFollowers" :type="menuSelection" />
+      <StreamerList v-else-if="menuSelection === 'Offline'" :streamers="offlineFollowers" :type="menuSelection" />
+      <div v-else>All Streamers Displayed here.</div>
   </div>
 
 </template>
@@ -47,13 +45,7 @@ export default {
     ...mapGetters({
       liveFollowers: 'getFollowers',
       offlineFollowers: 'getOffline'
-    }),
-    streamersLive: function() {
-      return this.menuSelection === 'Live' && this.liveFollowers.length > 0
-    },
-    streamersOffline: function() {
-      return this.menuSelection === 'Offline' && this.offlineFollowers.length > 0
-    }
+    })
   },
   methods: {
     ...mapActions(['fetchFollowed']),
