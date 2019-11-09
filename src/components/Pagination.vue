@@ -18,7 +18,6 @@
     data() {
       return {
         currentPage: 1,
-        pageCount: 1,
         itemsPerPage: 6
       }
     },
@@ -26,6 +25,11 @@
       streamers: {
         type: Array,
         required: true
+      }
+    },
+    computed: {
+      pageCount: function() {
+        return Math.ceil(this.streamers.length / this.itemsPerPage)
       }
     },
     methods: {
@@ -36,16 +40,15 @@
         let streamerList = this.streamers.slice(start, end)
 
         return this.$emit('paginate', streamerList)
-      }
+      },
+
     },
     watch: {
       streamers: function(newVal, oldVal) {
-        this.pageCount = Math.ceil(newVal.length / this.itemsPerPage)
-        this.onUpdatePage()
+        if(newVal !== oldVal) { this.onUpdatePage() }
       }
     },
     mounted: function() {
-      this.pageCount = Math.ceil(this.streamers.length / this.itemsPerPage)
       this.onUpdatePage()
     }
   }
