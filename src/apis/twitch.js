@@ -99,7 +99,7 @@ export default {
     }
     return axiso.get(`${ROOT_URL}/videos?${qs.stringify(querystring)}`, {
       headers: {
-        "Client-ID" CLIENT_ID
+        "Client-ID": CLIENT_ID
       }
     })
   }
