@@ -4,7 +4,8 @@
     <div class="ui inverted centered pagination menu">
       <a v-for="pageNum in pageCount"
       v-bind:key="pageNum"
-      class="active item"
+      class="pagination__item item"
+      :class="{active: isActive(pageNum)}"
       @click="onUpdatePage(parseInt(pageNum))">{{ pageNum }}</a>
     </div>
   </div>
@@ -41,7 +42,9 @@
 
         return this.$emit('paginate', streamerList)
       },
-
+      isActive: function(pageNum) {
+        return this.currentPage == pageNum
+      }
     },
     watch: {
       streamers: function(newVal, oldVal) {
@@ -60,6 +63,19 @@
   #pagination {
     margin: 20px 0;
     text-align: center;
+  }
+
+  #pagination .active.item  {
+    color: var(--text-black) !important;
+    background: #a8ff78 !important;
+    background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78) !important;
+    background: linear-gradient(to right, #78ffd6, #a8ff78) !important;
+    transition: transform .2s ease-in;
+  }
+
+  #pagination .item:hover,
+  #pagination .item:active {
+    transform: scale(1.1);
   }
 
 </style>
