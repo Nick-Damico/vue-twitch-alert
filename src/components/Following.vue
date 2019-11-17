@@ -17,6 +17,7 @@
     </div>
       <StreamerList v-if="menuSelection === 'Live'" :streamers="liveFollowers" :type="menuSelection" />
       <StreamerList v-else-if="menuSelection === 'Offline'" :streamers="offlineFollowers" :type="menuSelection" />
+      <VideoList v-else-if="menuSelection === 'Recent VODS'" :streamers="offlineFollowers" />
       <div v-else>All Streamers Displayed here.</div>
   </div>
 
@@ -24,6 +25,7 @@
 
 <script>
 import StreamerList from './StreamerList'
+import VideoList from './VideoList'
 import {
   mapGetters,
   mapActions
@@ -33,13 +35,14 @@ export default {
   name: 'Followers',
   data: () => {
     return {
-      menuItems: ['Live', 'Offline', 'All', 'Recent VODS'],
+      menuItems: ['Live', 'Offline', 'Recent VODS', 'All'],
       menuKlasses: ['four'],
       menuSelection: 'Live'
     }
   },
   components: {
-    StreamerList
+    StreamerList,
+    VideoList
   },
   computed: {
     ...mapGetters({

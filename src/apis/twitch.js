@@ -97,7 +97,7 @@ export default {
     const querystring = {
       user_id: id
     }
-    return axiso.get(`${ROOT_URL}/videos?${qs.stringify(querystring)}`, {
+    return axios.get(`${ROOT_URL}/videos?${qs.stringify(querystring)}`, {
       headers: {
         "Client-ID": CLIENT_ID
       }

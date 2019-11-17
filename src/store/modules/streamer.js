@@ -1,22 +1,24 @@
-import { router } from '../../main'
+// import { router } from '../../main'
 import twitch_api from "../../apis/twitch";
 
 const state = {
   selectedStreamer: null,
   streamers: [],
   followers: [],
-  offline: []
+  offline: [],
+  videos: []
 };
 
 const getters = {
   selectedStreamer: state => state.selectedStreamer,
   allStreamers: state => state.streamers,
   getFollowers: state => state.followers,
-  getOffline: state => state.offline
+  getOffline: state => state.offline,
+  getVideos: state => state.videos
 };
 
 const actions = {
-  setStreamer({ commit, dispatch }, streamer) {
+  setStreamer({ commit }, streamer) {
     commit("SET_SELECTED_STREAMER", streamer)
   },
   async fetchTop20({ commit, dispatch }) {
@@ -38,8 +40,15 @@ const actions = {
     const { allIds, liveIds } = payload
     const offlineIds = allIds.filter(id => !liveIds.includes(id))
     const offlineStreamers = await twitch_api.fetchUsers(offlineIds)
-    
+
     commit("SET_OFFLINE", offlineStreamers.data.data)
+  },
+  async fetchVideos({ commit, rootState }) {
+    if(!rootState.selectedStreamer) { return }
+
+    const videos = await twitch_api.fetchVideos(this.selectedStreamer['user_id'])
+
+    commit("SET_VIDEOS", videos.data.data)
   }
 };
 
@@ -55,6 +64,9 @@ const mutations = {
   },
   SET_OFFLINE: (state, streamers) => {
     state.offline = streamers
+  },
+  SET_VIDEOS: (state, videos) => {
+    state.videos = videos
   }
 };
 
