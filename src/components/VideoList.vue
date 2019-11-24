@@ -1,14 +1,4 @@
 <template lang="html">
-<<<<<<< HEAD
-  <h2>VideoList</h2>
-</template>
-
-<script>
-export default {
-  name: 'VideoList',
-  props: {
-    streamers: Array
-=======
   <div class="video-list__container">
     <h4>VideoList</h4>
     <div class="ui grid centered stackable video-list" v-if="videoList">
@@ -44,7 +34,6 @@ export default {
     onPaginate: function(videos) {
       this.videoList = videos
     }
->>>>>>> development
   }
 }
 </script>
