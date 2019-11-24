@@ -92,5 +92,15 @@ export default {
         "Client-ID": CLIENT_ID
       }
     });
+  },
+  fetchVideos(id) {
+    const querystring = {
+      user_id: id
+    }
+    return axios.get(`${ROOT_URL}/videos?${qs.stringify(querystring)}`, {
+      headers: {
+        "Client-ID": CLIENT_ID
+      }
+    })
   }
 };
