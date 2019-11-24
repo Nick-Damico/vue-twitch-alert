@@ -7,7 +7,7 @@
                         :streamer="streamer"
                         :type="type" />
     </div>
-    <Pagination :streamers="streamers" @paginate="onPaginate" />
+    <Pagination :items="streamers" @paginate="onPaginate" />
   </div>
 
 </template>

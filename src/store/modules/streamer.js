@@ -2,7 +2,8 @@
 import twitch_api from "../../apis/twitch";
 
 const state = {
-  selectedStreamer: null,
+  selectedStreamer: {},
+  selectedVideo: {},
   streamers: [],
   followers: [],
   offline: [],
@@ -11,6 +12,7 @@ const state = {
 
 const getters = {
   selectedStreamer: state => state.selectedStreamer,
+  selectedVideo: state => state.selectedVideo,
   allStreamers: state => state.streamers,
   getFollowers: state => state.followers,
   getOffline: state => state.offline,
@@ -20,6 +22,10 @@ const getters = {
 const actions = {
   setStreamer({ commit }, streamer) {
     commit("SET_SELECTED_STREAMER", streamer)
+    dispatch({ type: 'fetchVideos', payload: { streamer: streamer }})
+  },
+  setVideo({ commit }, video) {
+    commit("SET_SELECTED_VIDEO", video)
   },
   async fetchTop20({ commit, dispatch }) {
     const streamersResponse = await twitch_api.fetchTop20Streamers()
@@ -43,10 +49,9 @@ const actions = {
 
     commit("SET_OFFLINE", offlineStreamers.data.data)
   },
-  async fetchVideos({ commit, rootState }) {
-    if(!rootState.selectedStreamer) { return }
-
-    const videos = await twitch_api.fetchVideos(this.selectedStreamer['user_id'])
+  async fetchVideos({ commit, rootState }, { payload }) {
+    const { streamer } = payload
+    const videos = await twitch_api.fetchVideos(streamer['user_id'])
 
     commit("SET_VIDEOS", videos.data.data)
   }
@@ -58,6 +63,9 @@ const mutations = {
   },
   SET_SELECTED_STREAMER: (state, streamer) => {
     state.selectedStreamer = streamer;
+  },
+  SET_SELECTED_VIDEO: (state, video) => {
+    state.selectedVideo = video
   },
   SET_STREAMERS: (state, streamers) => {
     state.streamers = streamers

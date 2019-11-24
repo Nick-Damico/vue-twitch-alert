@@ -23,14 +23,14 @@
       }
     },
     props: {
-      streamers: {
+      items: {
         type: Array,
         required: true
       }
     },
     computed: {
       pageCount: function() {
-        return Math.ceil(this.streamers.length / this.itemsPerPage)
+        return Math.ceil(this.items.length / this.itemsPerPage)
       }
     },
     methods: {
@@ -38,16 +38,16 @@
         this.currentPage = pageNum
         let start = (pageNum - 1) * this.itemsPerPage
         let end = start + this.itemsPerPage
-        let streamerList = this.streamers.slice(start, end)
+        let itemList = this.items.slice(start, end)
 
-        return this.$emit('paginate', streamerList)
+        return this.$emit('paginate', itemList)
       },
       isActive: function(pageNum) {
         return this.currentPage == pageNum
       }
     },
     watch: {
-      streamers: function(newVal, oldVal) {
+      items: function(newVal, oldVal) {
         if(newVal !== oldVal) { this.onUpdatePage() }
       }
     },
