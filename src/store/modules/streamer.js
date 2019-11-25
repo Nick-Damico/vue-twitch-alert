@@ -20,7 +20,7 @@ const getters = {
 };
 
 const actions = {
-  setStreamer({ commit }, streamer) {
+  setStreamer({ commit, dispatch }, streamer) {
     commit("SET_SELECTED_STREAMER", streamer)
     dispatch({ type: 'fetchVideos', payload: { streamer: streamer }})
   },
