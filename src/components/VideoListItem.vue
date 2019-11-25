@@ -11,7 +11,7 @@
 
 <script>
 
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'VideoListItem',
@@ -22,10 +22,18 @@
     },
     computed: {
       thumbnailUrl() {
-        return this.video.thumbnail_url.replace(/{width}/, 740).replace(/{height}/, 416)
+        const { thumbnail_url } = this.video
+        if(thumbnail_url === '') {
+          return this.selectedStreamer().thumbnail_url.replace(/{width}/, 740).replace(/{height}/, 416)
+        } else {
+          return thumbnail_url.replace(/%{width}/, 740).replace(/%{height}/, 416)
+        }
       }
     },
     methods: {
+      ...mapGetters({
+        selectedStreamer: 'selectedStreamer'
+      }),
       ...mapActions(['setVideo']),
       onClick() {
         this.setVideo(this.video)
