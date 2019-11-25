@@ -2,7 +2,6 @@
   <div class="video-list__container">
     <h4>VideoList</h4>
     <div class="ui grid centered stackable video-list" v-if="videoList">
-      {{ videos }}
       <VideoListItem v-for="video in videoList"
                         v-bind:key="video.id"
                         :video="video"
@@ -24,16 +23,16 @@ export default {
     }
   },
   props: {
-    videos: Array
+    videos: Array,
+  },
+  methods: {
+    onPaginate(videos) {
+      return this.videoList = videos
+    }
   },
   components: {
     VideoListItem,
     Pagination
-  },
-  method: {
-    onPaginate: function(videos) {
-      this.videoList = videos
-    }
   }
 }
 </script>
