@@ -18,7 +18,6 @@
       <StreamerList v-if="menuSelection === 'Live'" :streamers="liveFollowers" :type="menuSelection" />
       <StreamerList v-else-if="menuSelection === 'Offline'" :streamers="offlineFollowers" :type="menuSelection" />
       <VideoList v-else-if="menuSelection === 'Recent VODS'" :videos="videos" />
-      <div v-else>All Streamers Displayed here.</div>
   </div>
 
 </template>
@@ -36,7 +35,7 @@ export default {
   name: 'Followers',
   data: () => {
     return {
-      menuItems: ['Live', 'Offline', 'All', 'Recent VODS'],
+      menuItems: ['Live', 'Offline', 'Recent VODS'],
       menuKlasses: ['four'],
       menuSelection: 'Live'
     }
