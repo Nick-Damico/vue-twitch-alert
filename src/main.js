@@ -4,6 +4,7 @@ import App from './App.vue'
 import AuthHandler from './components/AuthHandler'
 import TopTwenty from './components/TopTwenty'
 import Notifications from './components/Notifications'
+import Account from './components/Account'
 import LandingPage from './components/LandingPage'
 import Following from './components/Following'
 import store from './store/index'
@@ -22,6 +23,7 @@ export const router = new VueRouter({
     { path: '/', component: LandingPage },
     { path: '/top-20', component: TopTwenty },
     { path: '/notifications', component: Notifications },
+    { path: '/account', component: Account },
     { path: '/following', component: Following }
   ],
 })
