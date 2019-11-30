@@ -51,7 +51,8 @@ const actions = {
   },
   async fetchVideos({ commit, rootState }, { payload }) {
     const { streamer } = payload
-    const videos = await twitch_api.fetchVideos(streamer['user_id'])
+    const user_id = streamer.user_id ? streamer.user_id : streamer.id
+    const videos = await twitch_api.fetchVideos(user_id)
 
     commit("SET_VIDEOS", videos.data.data)
   }
