@@ -8,7 +8,7 @@
       Top 20
     </router-link>
     <div v-if="isLoggedIn" class="right menu">
-      <a class="ui item">Notifications</a>
+      <router-link to="/notifications" class="ui item">Notifications</router-link>
       <router-link to="/following" class="ui item">Following</router-link>
       <a class="ui item">Account</a>
       <a class="ui item" @click="logout">Logout</a>
