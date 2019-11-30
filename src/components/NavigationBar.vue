@@ -1,10 +1,10 @@
 <template lang="html">
 
   <nav class="ui inverted pointing menu nav">
-    <router-link to="/" class="item">
+    <router-link to="/" class="item" exact>
       StreamerAlert
     </router-link>
-    <router-link to="/top-20" class="active item">
+    <router-link to="/top-20" class="item">
       Top 20
     </router-link>
     <div v-if="isLoggedIn" class="right menu">

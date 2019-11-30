@@ -26,6 +26,7 @@ export const router = new VueRouter({
     { path: '/account', component: Account },
     { path: '/following', component: Following }
   ],
+  linkActiveClass: "active",
 })
 
 new Vue({
