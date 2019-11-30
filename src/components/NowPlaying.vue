@@ -37,12 +37,14 @@
         game: 'selectedGame'
       }),
       boxartThumbnailUrl() {
-        if (this.game) {
+        if (this.game && this.game.box_art_url) {
           return this.game.box_art_url.replace(/{width}/, 188).replace(/{height}/, 250)
         }
       },
       streamThumbnailUrl() {
-        return this.streamer.thumbnail_url.replace(/{width}/, 512).replace(/{height}/, 288)
+        if (this.streamer && this.streamer.thumbnail_url){          
+          return this.streamer.thumbnail_url.replace(/{width}/, 512).replace(/{height}/, 288)
+        }
       }
     },
     methods: {
