@@ -21,9 +21,8 @@ TODO:
 - "semantic-ui"
 
 ## Project setup
-```
-npm install
-```
+- `npm install`
+- Replace environment variables with your own Twitch API Client-ID and Client-Secret in `twitch.js`.
 
 ### Compiles and hot-reloads for development
 ```
