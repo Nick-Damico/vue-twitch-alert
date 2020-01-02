@@ -1,6 +1,7 @@
 <template lang="html">
 
   <div class="ui inverted center aligned segment following">
+    <SideBar />
     <div class="ui text">
       <h2 class="ui inverted text-slim following__title">
         Following
@@ -25,6 +26,7 @@
 <script>
 import StreamerList from './StreamerList'
 import VideoList from './VideoList'
+import SideBar from './SideBar'
 
 import {
   mapGetters,
@@ -42,7 +44,8 @@ export default {
   },
   components: {
     StreamerList,
-    VideoList
+    VideoList,
+    SideBar
   },
   computed: {
     ...mapGetters({
