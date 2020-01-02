@@ -6,7 +6,7 @@ const CLIENT_SECRET = process.env.VUE_APP_CLIENT_SECRET;
 const AUTH_ROOT_URL = "https://id.twitch.tv";
 const ROOT_URL = "https://api.twitch.tv/helix";
 // const redirect_uri = "http://localhost:8080/oauth2/callback";
-const redirect_uri = "http://streamer-alert.netlify.com/oauth2/callback"
+const redirect_uri = "https://streamer-alert.netlify.com/oauth2/callback";
 const grant_type = "client_credentials";
 const response_type = "token";
 // space separated
